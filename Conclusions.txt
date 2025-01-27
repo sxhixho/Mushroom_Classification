@@ -1,0 +1,114 @@
+One_Hot_Encoding:
+
+Model Accuracies:
+Logistic Regression - Training Accuracy: 0.9998, Testing Accuracy: 1.0000
+Decision Tree - Training Accuracy: 1.0000, Testing Accuracy: 1.0000
+Random Forest - Training Accuracy: 1.0000, Testing Accuracy: 1.0000
+SVM - Training Accuracy: 0.9995, Testing Accuracy: 0.9994
+SGD - Training Accuracy: 0.9997, Testing Accuracy: 1.0000
+
+Label_Encoding: 
+
+Model Accuracies:
+Logistic Regression - Training Accuracy: 0.9243, Testing Accuracy: 0.9126
+Decision Tree - Training Accuracy: 1.0000, Testing Accuracy: 1.0000
+Random Forest - Training Accuracy: 1.0000, Testing Accuracy: 1.0000
+SVM - Training Accuracy: 1.0000, Testing Accuracy: 1.0000
+SGD - Training Accuracy: 0.9180, Testing Accuracy: 0.9317
+
+GridSearchCV:
+
+Model Accuracies (Before and After GridSearchCV):
+Decision Tree: Initial Accuracy = 1.0000, Best Accuracy = 1.0000
+Random Forest: Initial Accuracy = 1.0000, Best Accuracy = 1.0000
+SVM: Initial Accuracy = 0.9914, Best Accuracy = 1.0000
+SGD: Initial Accuracy = 0.9637, Best Accuracy = 0.9692
+
+Experiment_01 - Excluding the feature with the highest absolute correlation:
+
+-Without GridSearchCV Hyperparameter Tuning
+
+Model Accuracies:
+Logistic Regression - Training Accuracy: 0.9117, Testing Accuracy: 0.9003
+Decision Tree - Training Accuracy: 1.0000, Testing Accuracy: 1.0000
+Random Forest - Training Accuracy: 1.0000, Testing Accuracy: 1.0000
+SVM - Training Accuracy: 1.0000, Testing Accuracy: 1.0000
+SGD - Training Accuracy: 0.9097, Testing Accuracy: 0.9040
+
+-With GridSearchCV Hyperparameter Tuning
+
+Model Accuracies:
+Logistic Regression - Training Accuracy: 0.9118, Testing Accuracy: 0.9003
+Decision Tree - Training Accuracy: 1.0000, Testing Accuracy: 1.0000
+Random Forest - Training Accuracy: 1.0000, Testing Accuracy: 1.0000
+SVM - Training Accuracy: 1.0000, Testing Accuracy: 1.0000
+SGD - Training Accuracy: 0.9174, Testing Accuracy: 0.9114
+
+Experiment_02 - Selecting only features with absolute correlation > 0.5:
+
+-Without GridSearchCV Hyperparameter Tuning
+
+Model Accuracies:
+Logistic Regression - Training Accuracy: 0.8007, Testing Accuracy: 0.7902
+Decision Tree - Training Accuracy: 0.8675, Testing Accuracy: 0.8652
+Random Forest - Training Accuracy: 0.8675, Testing Accuracy: 0.8652
+SVM - Training Accuracy: 0.8001, Testing Accuracy: 0.7877
+SGD - Training Accuracy: 0.7507, Testing Accuracy: 0.7452
+
+-With GridSearchCV Hyperparameter Tuning
+
+Model Accuracies:
+Logistic Regression - Training Accuracy: 0.8007, Testing Accuracy: 0.7902
+Decision Tree - Training Accuracy: 0.8675, Testing Accuracy: 0.8652
+Random Forest - Training Accuracy: 0.8675, Testing Accuracy: 0.8652
+SVM - Training Accuracy: 0.8280, Testing Accuracy: 0.8240
+SGD - Training Accuracy: 0.7601, Testing Accuracy: 0.7409
+
+Conclusions: 
+
+-Label Encoding vs. One-Hot Encoding:
+
+One-Hot Encoding consistently outperforms Label Encoding across all models, achieving perfect accuracy in most cases. 
+This is because:
+One-hot encoding treats categorical features as independent binary variables, avoiding the implicit ordinal relationship introduced by label encoding. 
+This is particularly important for algorithms sensitive to feature scaling and relationships, such as logistic regression and SVM.
+Label encoding introduces numerical values that may mislead the model into assuming a rank or order, reducing performance in some cases (e.g., logistic regression and SGD).
+
+-Is GridSearchCV Worth It?:
+
+Impact of GridSearchCV:
+GridSearchCV provides marginal improvements in certain models, such as SVM and SGD, where hyperparameter tuning is critical for optimization. 
+For example:
+SVM testing accuracy improved from 0.9914 to 1.0000.
+SGD testing accuracy improved from 0.9637 to 0.9692.
+For simpler models like decision trees and random forests that already achieve perfect accuracy, GridSearchCV offers little to no improvement.
+
+Storage and Time Costs:
+Applying GridSearchCV can be computationally expensive, especially for large datasets or complex models with extensive parameter grids. 
+In this case, the minor improvements suggest that it may not always justify the additional storage and time cost, particularly when models are already near-optimal.
+
+-Experiment 1: Removing the Feature with the Highest Absolute Correlation:
+
+Removing the feature with the highest absolute correlation has minimal impact on performance for most models:
+Decision Tree, Random Forest, and SVM continue to achieve perfect accuracy.
+Logistic Regression and SGD show slight performance drops (e.g., SGD testing accuracy decreases from 0.9317 to 0.9040 without GridSearchCV).
+This suggests that highly correlated features may not always contribute significantly to overfitting, particularly for robust models like random forests or decision trees.
+
+-Experiment 2: Selecting Only Features with Absolute Correlation > 0.5:
+
+Performance drops significantly when retaining only features with an absolute correlation > 0.5:
+For example, logistic regression testing accuracy decreases to 0.7902, and decision tree testing accuracy drops to 0.8652.
+This indicates that discarding lower-correlated features may lead to a loss of valuable information, 
+especially in datasets with intricate feature interactions where weakly correlated features still contribute to model performance.
+
+-General Observations:
+
+Models like decision trees, random forests, and SVM are highly robust and perform well across all experiments, even with reduced feature sets or less optimal encoding.
+Logistic regression and SGD are more sensitive to feature selection and encoding, highlighting the importance of preprocessing and hyperparameter tuning for these models.
+For simpler datasets like the Mushroom dataset, where certain features are highly predictive, simpler preprocessing methods and default hyperparameters often suffice without significant performance loss.
+
+
+
+
+
+
