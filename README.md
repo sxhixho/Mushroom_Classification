@@ -5,25 +5,22 @@
  
 ## Algorithms:
 
--Logistic Regression 
--Decision Tree Classifier
--Random Forest Classifier 
--Support Vector Machine (SVM) 
--Stochastic Gradient Descent (SGD)
+-Logistic Regression<br>
+-Decision Tree Classifier<br>
+-Random Forest Classifier<br>
+-Support Vector Machine (SVM)<br>
+-Stochastic Gradient Descent (SGD)<br>
 
 ## Methods:
 
--Feature Encoding:
-  One_Hot_Encoding & Label_Encoding 
--Feature Selection: 
-  Experiment_01: Removing the Feature with the Highest Absolute Correlation & 
-  Experiment_02: Selecting Only Features with Absolute Correlation > 0.5 
--Hyperparameter Tuning GridSearchCV 
--Feature Scaling
+-Feature Encoding <br>
+-Feature Selection <br>
+-Hyperparameter Tuning GridSearchCV <br>
+-Feature Scaling<br>
 
 ## Functions:
 
--Correlation Analysis 
--Train-Test Split 
--Model Evaluation 
--Overfitting Check
+-Correlation Analysis <br>
+-Train-Test Split <br>
+-Model Evaluation <br>
+-Overfitting Check<br>
